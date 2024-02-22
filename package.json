@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron-forge start",
-    "package": "electron-forge package"
+    "build": "electron-builder"
   },
-  "author": "czlabinger",
+  "author": "Christof Zlabinger <stoffi05@pm.me> (https://github.com/czlabinger)",
   "license": "MIT",
   "bin": {
     "notion-calendar-electron": "./index.js"
