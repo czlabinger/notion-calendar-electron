@@ -1,0 +1,19 @@
+{
+  "name": "notion-calendar-electron",
+  "version": "1.0.0",
+  "description": "Electron-based Notion Calendar client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "czlabinger",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^29.0.1",
+    "electron-builder": "^24.12.0"
+  },
+  "bin": {
+    "notion-calendar-electron": "./index.js"
+  }
+}
