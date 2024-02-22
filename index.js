@@ -1,13 +1,13 @@
-const electron = require('electron')
-const app = electron.app
+#!/usr/bin/env node
+
+const { app, BrowserWindow } = require('electron');
 
 app.on('ready', () => {
-  const { BrowserWindow } = require('electron')
 
   // Create a new window
-  let win = new BrowserWindow({ width: 800, height: 600 })
+  let win = new BrowserWindow({ width: 800, height: 600 });
 
   // Load the external website
-  win.loadURL('https://calendar.notion.so/')
+  win.loadURL('https://calendar.notion.so/');
 
-})
+});
