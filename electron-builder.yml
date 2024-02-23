@@ -3,3 +3,6 @@ linux:
   target:
     - target: tar.xz
       arch: [x64]
+files:
+  - "**/*"
+  - "!**/notion-calendar-electron"
