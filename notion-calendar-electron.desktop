@@ -7,10 +7,10 @@ Type=Application
 Version=1.0
 
 # The name of the application
-Name="Notion Calendar"
+Name=Notion Calendar
 
 # A comment which can/will be used as a tooltip
-Comment="Notion Calendar"
+Comment=Notion Calendar
 
 # The path to the folder in which the executable is run
 Path=/usr/bin/
@@ -19,7 +19,7 @@ Path=/usr/bin/
 Exec=notion-calendar-electron
 
 # The name of the icon that will be used to display this entry
-Icon=notion-calendar
+Icon=icon.png
 
 # Describes whether this application needs to be run in a terminal or not
 Terminal=false
