@@ -21,5 +21,10 @@ app.on('ready', () => {
     require('electron').ipcRenderer.send('notification', { title, options });
   };
 
+    win.webContents.setWindowOpenHandler((details) => {
+    require('electron').shell.openExternal(details.url);
+    return { action: 'deny' };
+    });
+    
 });
 
