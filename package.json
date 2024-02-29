@@ -1,6 +1,6 @@
 {
   "name": "notion-calendar-electron",
-  "version": "1.119.0.1",
+  "version": "1.119.0.2",
   "description": "Electron-based Notion Calendar client",
   "main": "index.js",
   "scripts": {
