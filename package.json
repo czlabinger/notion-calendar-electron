@@ -1,10 +1,11 @@
 {
   "name": "notion-calendar-electron",
-  "version": "1.119.0",
+  "version": "1.119.0.2",
   "description": "Electron-based Notion Calendar client",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "electron .",
     "build": "electron-builder"
   },
   "author": "Christof Zlabinger <stoffi05@pm.me> (https://github.com/czlabinger)",
