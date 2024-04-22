@@ -16,6 +16,15 @@ app.on('ready', () => {
     //win.webContents.openDevTools();
 
     win.webContents.setWindowOpenHandler((details) => {
+
+		console.log(typeof details.url);
+
+		if(details.url.includes("https://calendar.notion.so/google-permissions")) {
+        	return {
+            	action: 'allow'
+        	};
+		}
+
         require('electron').shell.openExternal(details.url);
         return {
             action: 'deny'
