@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 
-const { app, BrowserWindow,ipcMain} = require('electron');
+const { app, BrowserWindow } = require('electron');
 
-app.on('ready', () => {
+app.whenReady().then(() => {
+  
+console.log('App is ready');
+  
+  app.on('ready', () => {
+    console.log('App on ready event');
 
-    // Create a new window
     let win = new BrowserWindow({
         width: 800,
         height: 600,
@@ -32,4 +36,5 @@ app.on('ready', () => {
         };
     });
 
+  });
 });

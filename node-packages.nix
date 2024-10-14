@@ -7,7 +7,7 @@ let
   args = {
     name = "notion-calendar-electron";
     packageName = "notion-calendar-electron";
-    version = "1.0.2";
+    version = "1.0.4";
     src = ./.;
     buildInputs = globalBuildInputs;
     meta = {
