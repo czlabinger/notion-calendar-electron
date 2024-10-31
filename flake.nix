@@ -25,7 +25,7 @@
 
             mkdir -p $out/bin
             mkdir -p $out/share/notion-calendar-electron
-            mkdir -p $outshare/applications
+            mkdir -p $out/share/applications
 
             # Create wrapper script
             cat > $out/bin/notion-calendar-electron <<EOF
@@ -33,8 +33,8 @@
             exec ${pkgs.electron}/bin/electron $out
             EOF
 
-            cp $src/icon.png $outshare/notion-calendar-electron/
-            cp $src/notion-calendar-electron.desktop $outshare/applications/
+            cp $src/icon.png $out/share/notion-calendar-electron/
+            cp $src/notion-calendar-electron.desktop $out/share/applications/
 
             chmod +x $out/bin/notion-calendar-electron
           '';
