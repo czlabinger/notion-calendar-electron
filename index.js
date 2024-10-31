@@ -1,40 +1,38 @@
 #!/usr/bin/env node
 
-const { app, BrowserWindow } = require('electron');
-
+const { app, BrowserWindow } = require("electron");
+app.commandLine.appendSwitch("disable-gpu");
+app.commandLine.appendArgument("disable-gpu");
 app.whenReady().then(() => {
-  
-console.log('App is ready');
-  
-  app.on('ready', () => {
-    console.log('App on ready event');
+  console.log("App is ready");
 
-    let win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        autoHideMenuBar: true,
-    });
+  // app.on("ready", () => {
+  console.log("App on ready event");
 
-    // Load the external website
-    win.loadURL('https://calendar.notion.so/');
-
-    //win.webContents.openDevTools();
-
-    win.webContents.setWindowOpenHandler((details) => {
-
-		console.log(typeof details.url);
-
-		if(details.url.includes("https://calendar.notion.so/google-permissions")) {
-        		return {
-            			action: 'allow'
-        		};
-		}
-
-        require('electron').shell.openExternal(details.url);
-        return {
-            action: 'deny'
-        };
-    });
-
+  let win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    autoHideMenuBar: true,
   });
+
+  // Load the external website
+  win.loadURL("https://calendar.notion.so/");
+
+  //win.webContents.openDevTools();
+
+  win.webContents.setWindowOpenHandler((details) => {
+    console.log(typeof details.url);
+
+    if (details.url.includes("https://calendar.notion.so/google-permissions")) {
+      return {
+        action: "allow",
+      };
+    }
+
+    require("electron").shell.openExternal(details.url);
+    return {
+      action: "deny",
+    };
+  });
+  // });
 });
