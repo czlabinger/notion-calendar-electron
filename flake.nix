@@ -35,7 +35,7 @@
             EOF
 
             cp $src/icon.png $out/share/notion-calendar-electron/
-            cp $src/notion-calendar-electron.desktop $out/share/applications/
+            cp $src/notion-calendar-electron-nix.desktop $out/share/applications/notion-calendar-electron.desktop
 
             chmod +x $out/bin/notion-calendar-electron
           '';
