@@ -1,5 +1,5 @@
 {
-  description = "Electron-based Notion Calendar client";
+  description = "Electron application flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -9,40 +9,42 @@
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs { inherit system; };
-        node-modules = pkgs.mkYarnPackage {
-          name = "node-modules";
-          src = ./.;
-        };
-        package = pkgs.stdenv.mkDerivation {
-          name = "notion-calendar-electron";
-          src = ./.;
-          buildInputs = [pkgs.yarn node-modules];
-
-          buildPhase = ''
-            ${pkgs.yarn}/bin/yarn build
-          '';
-
-          installPhase =  ''
-          mkdir $out
-
-          mkdir -p $out/usr/share/notion-calendar-electron
-          mkdir -p $out/usr/bin
-          mkdir -p $out/usr/share/applications
-
-          cp -r ./dist/linux-unpacked/* $out/usr/share/notion-calendar-electron
-          cp -P ./notion-calendar-electron $out/usr/bin/
-          cp ./icon.png $out/usr/share/notion-calendar-electron/
-          cp ./notion-calendar-electron.desktop $out/usr/share/applications/
-          '';
-
-        };
+        pkgs = nixpkgs.legacyPackages.${system};
       in
-        {
-          packages = {
-            node-modules = node-modules;
-            default = package;
-          };
-        }
+      {
+        packages.default = pkgs.stdenv.mkDerivation {
+          name = "notion-caledar-electron";
+          src = ./.;
+
+          buildInputs = [ pkgs.electron ];
+
+          installPhase = ''
+            mkdir -p $out
+
+            cp -r $src/* $out/
+
+            mkdir -p $out/bin
+            mkdir -p $out/usr/share/notion-calendar-electron
+            mkdir -p $out/usr/bin
+            mkdir -p $out/usr/share/applications
+
+            # Create wrapper script
+            cat > $out/bin/notion-calendar-electron <<EOF
+            #!${pkgs.stdenv.shell}
+            exec ${pkgs.electron}/bin/electron $out
+            EOF
+
+            cp $src/icon.png $out/usr/share/notion-calendar-electron/
+            cp $src/notion-calendar-electron.desktop $out/usr/share/applications/
+
+            chmod +x $out/bin/notion-calendar-electron
+          '';
+        };
+
+        apps.default = {
+          type = "app";
+          program = "${self.packages.${system}.default}/bin/notion-calendar-electron";
+        };
+      }
     );
 }
