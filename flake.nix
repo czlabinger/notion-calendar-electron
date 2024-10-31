@@ -15,6 +15,7 @@
         packages.default = pkgs.stdenv.mkDerivation {
           name = "notion-caledar-electron";
           src = ./.;
+          version = "v1.0.4";
 
           buildInputs = [ pkgs.electron ];
 
