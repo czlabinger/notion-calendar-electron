@@ -45,7 +45,6 @@
           type = "app";
           program = "${self.packages.${system}.default}/bin/notion-calendar-electron";
         };
-        overlay = import ./nix/overlays.nix {inherit self;}.overlay;
       }
     );
 }
