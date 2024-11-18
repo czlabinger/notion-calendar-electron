@@ -14,6 +14,9 @@ A simple Electron-based Notion Calendar client
 ## Installation
 
 ### Arch
+
+From [AUR](https://aur.archlinux.org/packages/notion-calendar-electron)
+
 #### yay
 ```bash
 yay -S notion-calendar-electron
